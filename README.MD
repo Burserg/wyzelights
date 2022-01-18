@@ -1,13 +1,11 @@
 # Wyze Light Controller
 ___
-
-### A simple flask application to control Wyze color bulbs.
-
 [![PyPI version][pypi-image]][pypi-url]
 [![Python Version][python-version]][pypi-url]
 [![Read the Docs][support-docs]][docs-url]
+### A simple flask application to control Wyze color bulbs.
 
-##TODO:
+## TODO:
 
  - [ ] Brightness slider
  - [ ] Color undo
