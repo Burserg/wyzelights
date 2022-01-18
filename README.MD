@@ -1,5 +1,6 @@
 # Wyze Light Controller
 ___
+
 [![PyPI version][pypi-image]][pypi-url]
 [![Python Version][python-version]][pypi-url]
 [![Read the Docs][support-docs]][docs-url]
