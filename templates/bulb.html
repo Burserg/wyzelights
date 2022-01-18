@@ -1,0 +1,52 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block styles %}
+{{ super() }}
+	<style>
+		body { background: #1D2228; }
+        h1, h3, p { color: #E1E2E2;}
+        a:link { text-decoration: none; }
+        a:visited { text-decoration: none; }
+        a:hover { text-decoration: none; }
+        a:active { text-decoration: none; }
+	</style>
+{% endblock %}
+
+
+{% block title %}
+Wyze Bulb {{ bulb.nickname }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-lg-8 mx-lg-auto mx-md-auto">
+        {% if bulb %}
+            <h1 class="pt-5 pb-2">{{ bulb.nickname }}</h1>
+            <p class="lead">Brightness: {{ bulb.brightness }}</p>
+            <p class="lead">Temp: {{ bulb.color_temp }}K</p>
+            <p class="lead">Color: {{ bulb.color }}</p>
+            {% if bulb.is_on %}
+                <a class="btn btn-light" href="{{ url_for('turn_off', mac=bulb.mac, model=bulb.product.model)  }}">Turn Off</a>
+            {% else %}
+                <a class="btn btn-light" href="{{ url_for('turn_on', mac=bulb.mac, model=bulb.product.model)  }}">Turn On</a>
+            {% endif %}
+
+            {{ wtf.quick_form(form) }}
+
+            <h3 class="pt-5 pb-2">Network</h3>
+            <p class="lead">IP: {{ bulb.ip }}</p>
+            <p class="lead">SSID: {{ bulb.ssid }}</p>
+            <p class="lead">Online: {{ bulb.is_online }}</p>
+            <p class="lead">Firmware: {{ bulb.firmware_version }}</p>
+        {% endif %}
+
+      <p class="pt-5"><strong>{{ message }}</strong></p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

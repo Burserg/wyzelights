@@ -1,0 +1,41 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block styles %}
+{{ super() }}
+	<style>
+		body { background: #1D2228; }
+        h1, a{ color: #E1E2E2;}
+        a:link { text-decoration: none; }
+        a:visited { text-decoration: none; }
+        a:hover {
+            color: #FB8122;
+            text-decoration: none; }
+        a:active { text-decoration: none; }
+	</style>
+{% endblock %}
+
+
+{% block title %}
+Wyze Lights
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-lg-8 mx-lg-auto mx-md-auto">
+        {% if lights %}
+            {% for devices in lights %}
+                <h1 class="pt-5 pb-2"><a href="{{ url_for('bulb_info', mac=devices.mac) }}">{{ devices.nickname }}</a></h1>
+            {% endfor %}
+        {% endif %}
+
+      <p class="pt-5"><strong>{{ message }}</strong></p>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
