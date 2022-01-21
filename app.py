@@ -11,6 +11,7 @@ from wyze_sdk.errors import WyzeApiError
 load_dotenv()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get("CSRF_SECRET_KEY")
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 Bootstrap(app)
 client = Client(email=os.environ.get("WYZE_USER"), password=os.environ.get("WYZE_PASSWORD"))
 
@@ -60,7 +61,7 @@ def bulb_info(mac):
             color = form.color.data
             client.bulbs.set_color(device_mac=response.mac,
                                    device_model=response.product.model,
-                                   color=color)
+                                   color=color[1:])
             return redirect(url_for('bulb_info', mac=response.mac))
 
         return render_template('bulb.html', bulb=response, form=form, message=message)

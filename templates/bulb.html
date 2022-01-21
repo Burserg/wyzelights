@@ -1,6 +1,7 @@
 {% extends 'bootstrap/base.html' %}
 {% import "bootstrap/wtf.html" as wtf %}
 
+
 {% block styles %}
 {{ super() }}
 	<style>
@@ -20,7 +21,6 @@ Wyze Bulb {{ bulb.nickname }}
 
 
 {% block content %}
-
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-lg-8 mx-lg-auto mx-md-auto">
@@ -49,4 +49,8 @@ Wyze Bulb {{ bulb.nickname }}
   </div>
 </div>
 
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='helper.js') }}"></script>
 {% endblock %}
